@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   R.O. SMITH LAW FIRM — Design System
+   Philosophy: Editorial Prestige — Luxury Legal Dark/Gold
+   Colors: Deep navy-charcoal + warm gold accent
+   Typography: Playfair Display + Cormorant Garamond + DM Sans
+   ============================================================ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-cream: var(--gold-cream);
+  --color-navy: var(--navy);
+  --color-charcoal: var(--charcoal);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Brand Colors */
+  --gold: #C9A84C;
+  --gold-light: #d4b896;
+  --gold-cream: #E8D5B7;
+  --navy: #1a1a2e;
+  --charcoal: #0a0a0a;
+
+  /* Semantic tokens — dark theme as default */
+  --background: oklch(0.07 0.005 265);        /* #0a0a0a deep charcoal */
+  --foreground: oklch(0.96 0.005 65);          /* #f5f5f5 off-white */
+  --card: oklch(0.13 0.015 265);               /* #1a1a2e navy-charcoal */
+  --card-foreground: oklch(0.96 0.005 65);
+  --popover: oklch(0.13 0.015 265);
+  --popover-foreground: oklch(0.96 0.005 65);
+  --primary: oklch(0.72 0.12 75);             /* #C9A84C gold */
+  --primary-foreground: oklch(0.07 0.005 265);
+  --secondary: oklch(0.18 0.01 265);
+  --secondary-foreground: oklch(0.72 0.005 65);
+  --muted: oklch(0.18 0.01 265);
+  --muted-foreground: oklch(0.72 0.005 65);   /* #b8b8b8 */
+  --accent: oklch(0.72 0.12 75);
+  --accent-foreground: oklch(0.07 0.005 265);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.72 0.12 75);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-color: #0a0a0a;
+    color: #f5f5f5;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Gold underline accent */
+  .gold-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .gold-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #C9A84C, #E8D5B7, #C9A84C);
+    border-radius: 2px;
+  }
+
+  /* Section heading with gold rule */
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #f5f5f5;
+  }
+  .section-heading .accent-word {
+    color: #C9A84C;
+  }
+
+  /* Gold CTA Button */
+  .btn-gold {
+    background-color: #C9A84C;
+    color: #0a0a0a;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px 32px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 300ms ease, transform 200ms ease;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-gold:hover {
+    background-color: #d4b896;
+    transform: scale(1.03);
+  }
+  .btn-gold:active {
+    transform: scale(0.97);
+  }
+
+  /* Outline gold button */
+  .btn-gold-outline {
+    background-color: transparent;
+    color: #C9A84C;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 13px 31px;
+    border-radius: 6px;
+    border: 1.5px solid #C9A84C;
+    cursor: pointer;
+    transition: background-color 300ms ease, color 300ms ease, transform 200ms ease;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .btn-gold-outline:hover {
+    background-color: #C9A84C;
+    color: #0a0a0a;
+    transform: scale(1.03);
+  }
+  .btn-gold-outline:active {
+    transform: scale(0.97);
+  }
+
+  /* Practice area card */
+  .practice-card {
+    background-color: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 32px;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), border-color 300ms ease, box-shadow 300ms ease;
+  }
+  .practice-card:hover {
+    transform: translateY(-6px);
+    border-color: #C9A84C;
+    box-shadow: 0 20px 60px rgba(201, 168, 76, 0.12);
+  }
+
+  /* Testimonial card */
+  .testimonial-card {
+    background-color: #1a1a2e;
+    border-left: 4px solid #C9A84C;
+    border-radius: 4px;
+    padding: 24px;
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.1);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+  }
+
+  /* Fade-up animation utility */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1), transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gold text */
+  .text-gold {
+    color: #C9A84C;
+  }
+  .text-gold-cream {
+    color: #E8D5B7;
+  }
+  .text-muted-law {
+    color: #b8b8b8;
+  }
+
+  /* Floating call button */
+  .floating-call {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background-color: #C9A84C;
+    color: #0a0a0a;
+    border-radius: 50px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    text-decoration: none;
+  }
+  .floating-call:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.55);
+  }
+  .floating-call:active {
+    transform: scale(0.97);
+  }
+}
