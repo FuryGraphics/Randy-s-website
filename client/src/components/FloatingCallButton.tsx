@@ -1,5 +1,5 @@
 /**
- * FloatingCallButton — R.O. Smith Law Firm
+ * FloatingCallButton — Bergmann Law Firm, PLLC
  * Mobile-only sticky call button fixed to bottom-right viewport
  */
 import { Phone } from "lucide-react";
@@ -7,9 +7,9 @@ import { Phone } from "lucide-react";
 export default function FloatingCallButton() {
   return (
     <a
-      href="tel:9175477563"
+      href="tel:2107594336"
       className="floating-call md:hidden"
-      aria-label="Call R.O. Smith Law Firm: (917) 547-7563"
+      aria-label="Call Bergmann Law Firm: (210) 759-4336"
     >
       <Phone size={18} aria-hidden="true" />
       <span>Call Now</span>

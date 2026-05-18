@@ -1,17 +1,15 @@
 /**
- * Hero Section — R.O. Smith Law Firm
- * Design: Dark gradient with courtroom image overlay, left-weighted editorial layout
+ * Hero Section — Bergmann Law Firm, PLLC
+ * Design: Professional dark gradient with courtroom imagery, editorial layout
  * Animation: CSS keyframe staggered fade-up on load
  */
 import { Phone, ChevronDown } from "lucide-react";
 
-const HERO_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663609705540/fYjWgoDUwsCJ7rmjevsg5o/hero-bg-B93WuaoketekiW7GzQEgTi.webp";
-
 const heroItems = [
-  "20+ Years Experience",
-  "1,000+ Cases Resolved",
+  "Dedicated",
+  "Hard-Working",
+  "Straightforward",
   "Free Consultation",
-  "Available 24/7",
 ];
 
 export default function Hero() {
@@ -22,31 +20,33 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[600px] md:min-h-[700px] flex items-center overflow-hidden"
+      className="relative min-h-[650px] md:min-h-[750px] flex items-center overflow-hidden"
       aria-label="Hero section"
       style={{ paddingTop: "80px" }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${HERO_BG})` }}
-        aria-hidden="true"
-      />
-      {/* Dark gradient overlay */}
+      {/* Background gradient */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(105deg, rgba(10,10,10,0.95) 0%, rgba(26,26,46,0.90) 55%, rgba(10,10,10,0.70) 100%)",
+            "linear-gradient(135deg, #0A0F1A 0%, #0F1B2D 40%, #162238 70%, #0A0F1A 100%)",
         }}
         aria-hidden="true"
       />
-      {/* Subtle noise texture */}
+      {/* Subtle pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B8860B' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+        }}
+        aria-hidden="true"
+      />
+      {/* Gradient glow */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full opacity-20"
+        style={{
+          background: "radial-gradient(ellipse at 70% 30%, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
         }}
         aria-hidden="true"
       />
@@ -61,26 +61,27 @@ export default function Hero() {
               animation: "heroFadeUp 0.7s ease-out 0.1s both",
             }}
           >
-            <div className="h-px w-10 bg-[#C9A84C]" />
+            <div className="h-px w-12 bg-[#B8860B]" />
             <span
-              className="text-[#C9A84C] text-xs font-semibold tracking-[0.25em] uppercase"
+              className="text-[#B8860B] text-xs font-semibold tracking-[0.25em] uppercase"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              New York Criminal Defense &amp; Personal Injury
+              San Antonio Family Law &amp; Personal Injury
             </span>
           </div>
 
           {/* H1 */}
           <h1
-            className="text-[34px] sm:text-[44px] md:text-[52px] lg:text-[58px] font-bold leading-[1.1] text-[#f5f5f5] mb-6"
+            className="text-[34px] sm:text-[44px] md:text-[52px] lg:text-[60px] font-bold leading-[1.08] text-[#f5f5f5] mb-6"
             style={{
               fontFamily: "'Playfair Display', serif",
               animation: "heroFadeUp 0.7s ease-out 0.25s both",
             }}
           >
-            <span className="gold-underline text-[#C9A84C]">Experienced</span>{" "}
-            Criminal Defense, Personal Injury &amp; Real Estate Attorney{" "}
-            <span className="italic">Serving New York</span>
+            Your{" "}
+            <span className="gold-underline text-[#B8860B]">Advocate</span>{" "}
+            for Justice in{" "}
+            <span className="italic">San Antonio</span>
           </h1>
 
           {/* Subheading */}
@@ -91,8 +92,8 @@ export default function Hero() {
               animation: "heroFadeUp 0.7s ease-out 0.45s both",
             }}
           >
-            Trusted representation in NYC, Nassau, Suffolk &amp; Westchester counties.{" "}
-            <span className="text-[#E8D5B7] font-medium">Free consultation available 24/7.</span>
+            Attorney William R. Bergmann provides experienced representation in family law and personal injury matters throughout Bexar County.{" "}
+            <span className="text-[#E8D5B7] font-medium">Schedule your free consultation today.</span>
           </p>
 
           {/* CTAs */}
@@ -108,14 +109,14 @@ export default function Hero() {
               Schedule Free Consultation
             </button>
             <a
-              href="tel:9175477563"
-              className="flex items-center gap-2 text-[#C9A84C] font-semibold text-base hover:text-[#d4b896] transition-colors duration-200 group"
+              href="tel:2107594336"
+              className="flex items-center gap-2 text-[#B8860B] font-semibold text-base hover:text-[#D4A843] transition-colors duration-200 group"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
-              aria-label="Call now: (917) 547-7563"
+              aria-label="Call now: (210) 759-4336"
             >
               <Phone size={17} className="group-hover:scale-110 transition-transform" />
-              <span className="border-b border-[#C9A84C]/40 group-hover:border-[#d4b896] transition-colors">
-                Call Now: (917) 547-7563
+              <span className="border-b border-[#B8860B]/40 group-hover:border-[#D4A843] transition-colors">
+                Call Now: (210) 759-4336
               </span>
             </a>
           </div>
@@ -127,9 +128,9 @@ export default function Hero() {
           >
             {heroItems.map((item) => (
               <div key={item} className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#C9A84C]" />
+                <div className="w-2 h-2 rounded-full bg-[#B8860B]" />
                 <span
-                  className="text-[#b8b8b8] text-sm"
+                  className="text-[#b8b8b8] text-sm font-medium"
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {item}
@@ -160,7 +161,7 @@ export default function Hero() {
       {/* Gold vertical accent line */}
       <div
         className="absolute left-0 top-0 bottom-0 w-1 hidden lg:block"
-        style={{ background: "linear-gradient(180deg, transparent, #C9A84C 30%, #C9A84C 70%, transparent)" }}
+        style={{ background: "linear-gradient(180deg, transparent, #B8860B 30%, #B8860B 70%, transparent)" }}
         aria-hidden="true"
       />
 

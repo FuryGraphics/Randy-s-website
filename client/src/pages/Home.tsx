@@ -1,7 +1,7 @@
 /**
- * Home Page — R.O. Smith Law Firm
- * Design Philosophy: Editorial Prestige — Dark/Gold luxury legal landing page
- * All 9 sections assembled with scroll reveal animations
+ * Home Page — Bergmann Law Firm, PLLC
+ * Design Philosophy: Professional Prestige — Deep Navy/Gold luxury legal landing page
+ * All sections assembled with scroll reveal animations
  */
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
@@ -10,8 +10,8 @@ import TrustBar from "@/components/sections/TrustBar";
 import PracticeAreas from "@/components/sections/PracticeAreas";
 import About from "@/components/sections/About";
 import Testimonials from "@/components/sections/Testimonials";
-import ServiceAreas from "@/components/sections/ServiceAreas";
 import BlogPreview from "@/components/sections/BlogPreview";
+import ServiceAreas from "@/components/sections/ServiceAreas";
 import CTABanner from "@/components/sections/CTABanner";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
@@ -39,7 +39,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#0A0F1A]">
       {/* Navigation */}
       <Navbar />
 
@@ -60,16 +60,16 @@ export default function Home() {
         {/* Section 5: Testimonials */}
         <Testimonials />
 
-        {/* Section 6: Service Areas */}
-        <ServiceAreas />
-
-        {/* Section 7: Blog Preview */}
+        {/* Section 6: Work Ethic & Values */}
         <BlogPreview />
+
+        {/* Section 7: FAQ */}
+        <ServiceAreas />
 
         {/* Section 8: CTA Banner */}
         <CTABanner />
 
-        {/* Section 9 (Contact Form) */}
+        {/* Section 9: Contact Form */}
         <Contact />
       </main>
 

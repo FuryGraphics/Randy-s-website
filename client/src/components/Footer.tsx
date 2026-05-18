@@ -1,15 +1,20 @@
 /**
- * Footer — R.O. Smith Law Firm
- * Design: 4-column dark footer with gold top border, contact info, links
+ * Footer — Bergmann Law Firm, PLLC
+ * Design: Professional dark footer with gold accents, links, and legal disclaimer
  */
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Scale } from "lucide-react";
 
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
+  const handleNavClick = (href: string) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <footer
-      className="bg-[#0a0a0a] border-t-2 border-[#C9A84C]"
+      className="bg-[#060A12] border-t-2 border-[#B8860B]"
       role="contentinfo"
       aria-label="Site footer"
     >
@@ -18,21 +23,21 @@ export default function Footer() {
           {/* Column 1: Firm Info */}
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-8 h-8 border-2 border-[#C9A84C] flex items-center justify-center flex-shrink-0">
-                <span className="text-[#C9A84C] font-bold text-sm font-serif leading-none">RO</span>
+              <div className="w-9 h-9 border-2 border-[#B8860B] rounded-sm flex items-center justify-center bg-[#B8860B]/10">
+                <Scale size={18} className="text-[#B8860B]" />
               </div>
               <div className="flex flex-col leading-none">
                 <span
-                  className="text-[#f5f5f5] font-bold text-sm tracking-[0.15em] uppercase"
+                  className="text-[#f5f5f5] font-bold text-sm tracking-[0.12em] uppercase"
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  R.O. Smith
+                  Bergmann Law
                 </span>
                 <span
-                  className="text-[#C9A84C] text-[10px] tracking-[0.25em] uppercase"
+                  className="text-[#B8860B] text-[10px] tracking-[0.2em] uppercase mt-0.5"
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  Law Firm
+                  Firm, PLLC
                 </span>
               </div>
             </div>
@@ -40,29 +45,29 @@ export default function Footer() {
               className="text-[#b8b8b8] text-sm leading-relaxed mb-5"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Aggressive legal representation for criminal defense, personal injury, and real estate matters across New York.
+              Dedicated family law and personal injury representation in San Antonio and Bexar County, Texas.
             </p>
             <address className="not-italic space-y-2">
               <a
-                href="tel:9175477563"
-                className="flex items-center gap-2 text-[#b8b8b8] text-sm hover:text-[#C9A84C] transition-colors duration-200"
+                href="tel:2107594336"
+                className="flex items-center gap-2 text-[#b8b8b8] text-sm hover:text-[#B8860B] transition-colors duration-200"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                <Phone size={13} className="text-[#C9A84C]" aria-hidden="true" />
-                (917) 547-7563
+                <Phone size={13} className="text-[#B8860B]" aria-hidden="true" />
+                (210) 759-4336
               </a>
               <a
-                href="mailto:rsmit042179@gmail.com"
-                className="flex items-center gap-2 text-[#b8b8b8] text-sm hover:text-[#C9A84C] transition-colors duration-200 break-all"
+                href="mailto:william@wbergmannlaw.com"
+                className="flex items-center gap-2 text-[#b8b8b8] text-sm hover:text-[#B8860B] transition-colors duration-200 break-all"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                <Mail size={13} className="text-[#C9A84C] flex-shrink-0" aria-hidden="true" />
-                rsmit042179@gmail.com
+                <Mail size={13} className="text-[#B8860B] flex-shrink-0" aria-hidden="true" />
+                william@wbergmannlaw.com
               </a>
               <div className="flex items-start gap-2 text-[#b8b8b8] text-sm">
-                <MapPin size={13} className="text-[#C9A84C] flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <MapPin size={13} className="text-[#B8860B] flex-shrink-0 mt-0.5" aria-hidden="true" />
                 <span style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  11418 238th Street<br />Elmont, NY 11003
+                  San Antonio, Texas<br />Bexar County
                 </span>
               </div>
             </address>
@@ -78,21 +83,20 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5" role="list">
               {[
-                { label: "Criminal Defense", href: "/criminal-defense" },
-                { label: "Personal Injury", href: "/personal-injury" },
-                { label: "Real Estate Law", href: "/real-estate" },
-                { label: "DUI & Traffic", href: "/criminal-defense" },
-                { label: "Drug Charges", href: "/criminal-defense" },
-                { label: "Car Accidents", href: "/personal-injury" },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-[#b8b8b8] text-sm hover:text-[#C9A84C] transition-colors duration-200"
+                "Family Law",
+                "Personal Injury",
+                "Divorce",
+                "Child Custody",
+                "Spousal Support",
+                "Car Accidents",
+              ].map((area) => (
+                <li key={area}>
+                  <span
+                    className="text-[#b8b8b8] text-sm"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
-                    {link.label}
-                  </a>
+                    {area}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -108,23 +112,21 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5" role="list">
               {[
+                { label: "Home", href: "#hero" },
+                { label: "Practice Areas", href: "#practice-areas" },
                 { label: "About the Firm", href: "#about" },
-                { label: "Blog & Insights", href: "/blog" },
-                { label: "Client Testimonials", href: "/testimonials" },
+                { label: "Client Testimonials", href: "#testimonials" },
+                { label: "FAQ", href: "#faq" },
                 { label: "Contact Us", href: "#contact" },
-                { label: "New York City", href: "/new-york-city" },
-                { label: "Nassau County", href: "/nassau-county" },
-                { label: "Suffolk County", href: "/suffolk-county" },
-                { label: "Westchester County", href: "/westchester-county" },
               ].map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-[#b8b8b8] text-sm hover:text-[#C9A84C] transition-colors duration-200"
-                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  <button
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-[#b8b8b8] text-sm hover:text-[#B8860B] transition-colors duration-200"
+                    style={{ fontFamily: "'DM Sans', sans-serif", background: "none", border: "none", padding: 0, cursor: "pointer" }}
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -140,14 +142,14 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2.5 mb-8" role="list">
               {[
-                { label: "Privacy Policy", href: "/privacy-policy" },
-                { label: "Disclaimer", href: "/disclaimer" },
-                { label: "Sitemap", href: "/sitemap.xml" },
+                { label: "Privacy Policy", href: "#" },
+                { label: "Disclaimer", href: "#" },
+                { label: "Terms of Service", href: "#" },
               ].map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#b8b8b8] text-sm hover:text-[#C9A84C] transition-colors duration-200"
+                    className="text-[#b8b8b8] text-sm hover:text-[#B8860B] transition-colors duration-200"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {link.label}
@@ -157,13 +159,13 @@ export default function Footer() {
             </ul>
 
             {/* Availability badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[#C9A84C]/10 border border-[#C9A84C]/20">
-              <div className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" aria-hidden="true" />
+            <div className="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-[#B8860B]/10 border border-[#B8860B]/20">
+              <div className="w-2 h-2 rounded-full bg-[#B8860B] animate-pulse" aria-hidden="true" />
               <span
-                className="text-[#C9A84C] text-xs font-semibold"
+                className="text-[#B8860B] text-xs font-semibold"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                Available 24/7
+                Free Consultation
               </span>
             </div>
           </div>
@@ -177,7 +179,7 @@ export default function Footer() {
             className="text-[#b8b8b8]/50 text-xs text-center md:text-left"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
-            © {currentYear} R.O. Smith Law Firm. All rights reserved.
+            &copy; {currentYear} Bergmann Law Firm, PLLC. All rights reserved.
           </p>
           <p
             className="text-[#b8b8b8]/40 text-xs text-center md:text-right max-w-lg"

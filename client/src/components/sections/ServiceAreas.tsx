@@ -1,191 +1,155 @@
 /**
- * Service Areas Section — R.O. Smith Law Firm
- * Design: Split layout — Google Map left, service area list right
- * Map: Dark-themed Google Maps with Elmont, NY marker
+ * FAQ Section — Bergmann Law Firm, PLLC
+ * Design: Accordion-style FAQ with gold accents
+ * Note: Replaces the ServiceAreas section from the original template
  */
-import { useRef, useEffect } from "react";
-import { MapPin, ArrowRight } from "lucide-react";
-import { MapView } from "@/components/Map";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-const serviceAreas = [
+const faqs = [
   {
-    name: "New York City",
-    desc: "Manhattan, Brooklyn, Queens, Bronx & Staten Island",
-    href: "/new-york-city",
+    question: "What Types Of Cases Do You Handle?",
+    answer:
+      "Bergmann Law Firm handles a wide range of legal matters including family law (divorce, child custody, spousal support), personal injury (car accidents, workplace injuries, slip and fall), and civil litigation. We serve clients throughout San Antonio and Bexar County.",
   },
   {
-    name: "Nassau County",
-    desc: "Elmont, Hempstead, Long Beach, Garden City & more",
-    href: "/nassau-county",
+    question: "How Does The Divorce Process Work?",
+    answer:
+      "The divorce process in Texas begins with filing a petition, followed by a mandatory 60-day waiting period. During this time, we work on property division, custody arrangements, and support negotiations. Whether contested or uncontested, we guide you through every step to achieve the best possible outcome.",
   },
   {
-    name: "Suffolk County",
-    desc: "Babylon, Islip, Huntington, Smithtown & more",
-    href: "/suffolk-county",
+    question: "What Should I Do If I've Been Injured In A Car Accident?",
+    answer:
+      "First, seek medical attention immediately. Document the scene with photos, exchange information with other parties, and file a police report. Then, contact an attorney before speaking with insurance companies. We can help protect your rights and pursue fair compensation for your injuries.",
   },
   {
-    name: "Westchester County",
-    desc: "White Plains, Yonkers, Mount Vernon & more",
-    href: "/westchester-county",
+    question: "How Is Child Custody Determined In A Divorce?",
+    answer:
+      "In Texas, courts determine custody based on the best interests of the child. Factors include each parent's ability to provide care, the child's emotional and physical needs, stability of each home, and the child's own preferences if they are old enough. We advocate strongly for your parental rights.",
+  },
+  {
+    question: "What Are My Rights If I've Been Arrested?",
+    answer:
+      "If you've been arrested, you have the right to remain silent and the right to an attorney. Do not answer questions or sign anything without legal counsel present. Contact an attorney immediately to protect your rights and begin building your defense.",
+  },
+  {
+    question: "How Much Does It Cost To Hire A Lawyer?",
+    answer:
+      "We offer a free initial consultation to discuss your case. Fee structures vary depending on the type of case — personal injury cases are typically handled on a contingency basis (no fee unless we win), while family law matters may involve hourly rates or flat fees. We always discuss costs transparently upfront.",
+  },
+  {
+    question: "What Compensation Can I Receive In A Personal Injury Case?",
+    answer:
+      "Compensation may include medical expenses (past and future), lost wages, pain and suffering, property damage, and in some cases, punitive damages. The amount depends on the severity of your injuries, the impact on your daily life, and the negligence of the responsible party.",
+  },
+  {
+    question: "How Do I Get Started With My Legal Case?",
+    answer:
+      "Getting started is simple — contact us for a free consultation by phone at (210) 759-4336 or fill out our contact form. During the consultation, we'll discuss your situation, explain your legal options, and outline a strategy tailored to your specific needs.",
   },
 ];
 
-// Dark map style for Google Maps
-const darkMapStyles = [
-  { elementType: "geometry", stylers: [{ color: "#1a1a2e" }] },
-  { elementType: "labels.text.stroke", stylers: [{ color: "#0a0a0a" }] },
-  { elementType: "labels.text.fill", stylers: [{ color: "#b8b8b8" }] },
-  { featureType: "road", elementType: "geometry", stylers: [{ color: "#2a2a3e" }] },
-  { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#0a0a0a" }] },
-  { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#9ca3af" }] },
-  { featureType: "water", elementType: "geometry", stylers: [{ color: "#0d1117" }] },
-  { featureType: "water", elementType: "labels.text.fill", stylers: [{ color: "#515c6d" }] },
-  { featureType: "poi", elementType: "geometry", stylers: [{ color: "#1e1e3a" }] },
-  { featureType: "transit", elementType: "geometry", stylers: [{ color: "#1e1e3a" }] },
-  { featureType: "administrative", elementType: "geometry.stroke", stylers: [{ color: "#C9A84C", weight: 1.5 }] },
-  { featureType: "administrative.locality", elementType: "labels.text.fill", stylers: [{ color: "#d4b896" }] },
-];
-
-function MapSection() {
-  const mapRef = useRef<google.maps.Map | null>(null);
-
-  const handleMapReady = (map: google.maps.Map) => {
-    mapRef.current = map;
-    map.setOptions({ styles: darkMapStyles });
-
-    // Add marker for office location
-    new google.maps.Marker({
-      position: { lat: 40.6892, lng: -73.7037 }, // Elmont, NY
-      map,
-      title: "R.O. Smith Law Firm — 11418 238th Street, Elmont, NY 11003",
-      icon: {
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 10,
-        fillColor: "#C9A84C",
-        fillOpacity: 1,
-        strokeColor: "#0a0a0a",
-        strokeWeight: 2,
-      },
-    });
-  };
-
+function FAQItem({ question, answer, isOpen, onClick }: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}) {
   return (
-    <MapView
-      initialCenter={{ lat: 40.7128, lng: -73.9 }}
-      initialZoom={9}
-      onMapReady={handleMapReady}
-      className="w-full h-full min-h-[400px] rounded-lg overflow-hidden"
-    />
+    <div className="faq-item">
+      <button
+        onClick={onClick}
+        className="w-full flex items-center justify-between py-5 px-5 text-left group"
+        aria-expanded={isOpen}
+        style={{ background: "none", border: "none" }}
+      >
+        <span
+          className={`text-[15px] md:text-[16px] font-semibold transition-colors duration-200 pr-4 ${
+            isOpen ? "text-[#B8860B]" : "text-[#f5f5f5] group-hover:text-[#B8860B]"
+          }`}
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          {question}
+        </span>
+        <ChevronDown
+          size={20}
+          className={`text-[#B8860B] flex-shrink-0 transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <p
+          className="text-[#b8b8b8] text-[14px] leading-relaxed px-5 pb-5"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+        >
+          {answer}
+        </p>
+      </div>
+    </div>
   );
 }
 
 export default function ServiceAreas() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <section
-      id="service-areas"
-      className="py-20 md:py-28 bg-[#1a1a2e]"
-      aria-labelledby="service-areas-heading"
+      id="faq"
+      className="py-20 md:py-28 bg-[#0F1B2D]"
+      aria-labelledby="faq-heading"
     >
       <div className="container">
-        {/* Header */}
-        <div className="mb-12 fade-up">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-[#C9A84C]" />
-            <span
-              className="text-[#C9A84C] text-xs font-semibold tracking-[0.25em] uppercase"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+          {/* Left side - header */}
+          <div className="lg:col-span-2 fade-up">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-[#B8860B]" />
+              <span
+                className="text-[#B8860B] text-xs font-semibold tracking-[0.25em] uppercase"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Common Questions
+              </span>
+            </div>
+            <h2
+              id="faq-heading"
+              className="text-[30px] md:text-[40px] font-bold text-[#f5f5f5] leading-tight mb-6"
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              Where We Practice
-            </span>
-          </div>
-          <h2
-            id="service-areas-heading"
-            className="text-[30px] md:text-[40px] font-bold text-[#f5f5f5] leading-tight"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            We Serve All of{" "}
-            <span className="gold-underline text-[#C9A84C]">NYC &amp; Surrounding Counties</span>
-          </h2>
-        </div>
-
-        {/* Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Map */}
-          <div className="fade-up h-[400px] md:h-[480px] rounded-lg overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
-            <MapSection />
-          </div>
-
-          {/* Service Area List */}
-          <div className="fade-up" style={{ transitionDelay: "150ms" }}>
+              Frequently Asked{" "}
+              <span className="gold-underline text-[#B8860B]">Questions</span>
+            </h2>
             <p
               className="text-[#b8b8b8] text-base leading-relaxed mb-8"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              R.O. Smith Law Firm proudly serves clients throughout the greater New York metropolitan area. Our office is conveniently located in Elmont, NY, with easy access to all five boroughs and surrounding counties.
+              Have questions about your legal matter? Here are answers to some of the most common questions we receive. For specific guidance about your case, contact us for a free consultation.
             </p>
+            <button
+              onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="btn-gold"
+            >
+              Ask Your Question
+            </button>
+          </div>
 
-            <ul className="space-y-4" role="list">
-              {serviceAreas.map((area, i) => (
-                <li
-                  key={area.name}
-                  className="fade-up"
-                  style={{ transitionDelay: `${i * 80 + 200}ms` }}
-                >
-                  <a
-                    href={area.href}
-                    className="flex items-start gap-4 p-4 rounded-lg border border-white/8 bg-[#0a0a0a]/40 hover:border-[#C9A84C]/50 hover:bg-[#C9A84C]/5 transition-all duration-300 group"
-                  >
-                    <MapPin
-                      size={18}
-                      className="text-[#C9A84C] flex-shrink-0 mt-0.5"
-                      aria-hidden="true"
-                    />
-                    <div className="flex-1 min-w-0">
-                      <p
-                        className="text-[#f5f5f5] font-semibold text-base group-hover:text-[#C9A84C] transition-colors duration-200"
-                        style={{ fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {area.name}
-                      </p>
-                      <p
-                        className="text-[#b8b8b8] text-sm mt-0.5"
-                        style={{ fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {area.desc}
-                      </p>
-                    </div>
-                    <ArrowRight
-                      size={16}
-                      className="text-[#C9A84C]/40 group-hover:text-[#C9A84C] group-hover:translate-x-1 transition-all duration-200 flex-shrink-0 mt-0.5"
-                      aria-hidden="true"
-                    />
-                  </a>
-                </li>
+          {/* Right side - FAQ accordion */}
+          <div className="lg:col-span-3 fade-up" style={{ transitionDelay: "150ms" }}>
+            <div className="border border-white/8 rounded-lg overflow-hidden bg-[#0A0F1A]/50">
+              {faqs.map((faq, i) => (
+                <FAQItem
+                  key={i}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === i}
+                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                />
               ))}
-            </ul>
-
-            {/* Office Address */}
-            <div className="mt-8 p-5 rounded-lg border border-[#C9A84C]/20 bg-[#C9A84C]/5">
-              <p
-                className="text-[#C9A84C] text-xs font-semibold tracking-widest uppercase mb-2"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Office Location
-              </p>
-              <address
-                className="text-[#f5f5f5] text-sm not-italic leading-relaxed"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                11418 238th Street<br />
-                Elmont, NY 11003
-              </address>
-              <a
-                href="tel:9175477563"
-                className="text-[#C9A84C] text-sm font-semibold mt-2 inline-block hover:text-[#d4b896] transition-colors"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                (917) 547-7563
-              </a>
             </div>
           </div>
         </div>

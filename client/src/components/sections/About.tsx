@@ -1,31 +1,33 @@
 /**
- * About / Why Choose Us Section — R.O. Smith Law Firm
- * Design: Text + image split layout, gold accent list, fade-in on scroll
+ * About / Why Choose Us Section — Bergmann Law Firm, PLLC
+ * Design: Text + feature list split layout, gold accent list, fade-in on scroll
  */
 import { CheckCircle2 } from "lucide-react";
 
-const ATTORNEY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663609705540/fYjWgoDUwsCJ7rmjevsg5o/attorney-portrait-DATdGDtmc4i5vyCpprthLm.webp";
-
 const reasons = [
   {
-    title: "Personalized Attention",
-    desc: "You are never just a case number. Randy O. Smith personally handles every matter, ensuring you receive dedicated focus from intake through resolution.",
+    title: "Personalized Legal Representation",
+    desc: "Every case is unique and deserves individualized attention. We take the time to understand your specific legal needs and craft a tailored strategy.",
   },
   {
-    title: "Aggressive Advocacy",
-    desc: "Whether negotiating a settlement or arguing before a jury, we fight relentlessly to protect your rights and secure the best possible outcome.",
+    title: "Proven Experience Across Multiple Practice Areas",
+    desc: "With experience in family law, personal injury, and civil litigation, we offer comprehensive legal support under one roof.",
   },
   {
-    title: "Proven Track Record",
-    desc: "With over 1,000 cases resolved across criminal defense, personal injury, and real estate law, our results speak for themselves.",
+    title: "Aggressive Advocacy & Strong Negotiation",
+    desc: "We fight relentlessly to protect your interests, whether negotiating a fair settlement or defending you in court.",
   },
   {
-    title: "Available 24/7",
-    desc: "Legal emergencies don't follow business hours. We are always reachable when you need us most — nights, weekends, and holidays.",
+    title: "Clear Communication & Transparency",
+    desc: "We keep clients informed every step of the way, explaining legal procedures, options, and potential outcomes in clear, straightforward language.",
   },
   {
-    title: "Free Initial Consultation",
-    desc: "No obligation, no cost. Discuss your case with an experienced attorney and understand your options before making any decisions.",
+    title: "Client-Centered Approach",
+    desc: "We treat every client with respect, integrity, and care. We take the time to listen to your concerns and provide supportive, results-driven representation.",
+  },
+  {
+    title: "Commitment to Results",
+    desc: "Whether securing fair settlements, winning custody battles, or obtaining maximum compensation for injuries, we are committed to delivering successful outcomes.",
   },
 ];
 
@@ -33,17 +35,17 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 md:py-28 bg-[#1a1a2e]"
+      className="py-20 md:py-28 bg-[#0F1B2D]"
       aria-labelledby="about-heading"
     >
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Text Side */}
           <div className="fade-up">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-[#C9A84C]" />
+              <div className="h-px w-8 bg-[#B8860B]" />
               <span
-                className="text-[#C9A84C] text-xs font-semibold tracking-[0.25em] uppercase"
+                className="text-[#B8860B] text-xs font-semibold tracking-[0.25em] uppercase"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 Why Choose Us
@@ -55,27 +57,48 @@ export default function About() {
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Why Choose{" "}
-              <span className="gold-underline text-[#C9A84C]">R.O. Smith</span>{" "}
-              Law Firm?
+              <span className="gold-underline text-[#B8860B]">Bergmann Law</span>{" "}
+              Firm?
             </h2>
 
+            <p
+              className="text-[#b8b8b8] text-base leading-relaxed mb-4"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              The quality and intelligence of your lawyer can make a significant difference in the outcome of your case. As a San Antonio attorney, I am committed to seeking the most favorable outcome for my clients in various legal matters.
+            </p>
             <p
               className="text-[#b8b8b8] text-base leading-relaxed mb-8"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              At R.O. Smith Law Firm, we believe every client deserves the same fierce representation regardless of the complexity of their case. Founded on the principles of integrity, tenacity, and personal service, our practice has earned the trust of clients across New York City and surrounding counties.
+              When you retain Bergmann Law Firm, PLLC, you can trust that I will go the distance to help you resolve simple and the most complex legal issues. Your case will be given the attention it deserves.
             </p>
 
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-gold"
+              >
+                Schedule Free Consultation
+              </button>
+              <a href="tel:2107594336" className="btn-gold-outline">
+                Call (210) 759-4336
+              </a>
+            </div>
+          </div>
+
+          {/* Reasons Side */}
+          <div className="fade-up" style={{ transitionDelay: "200ms" }}>
             <ul className="space-y-5" role="list">
               {reasons.map((reason, i) => (
                 <li
                   key={reason.title}
-                  className="flex gap-4 fade-up"
-                  style={{ transitionDelay: `${i * 100}ms` }}
+                  className="flex gap-4 fade-up p-4 rounded-lg border border-white/5 hover:border-[#B8860B]/20 hover:bg-[#B8860B]/3 transition-all duration-300"
+                  style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <CheckCircle2
                     size={20}
-                    className="text-[#C9A84C] flex-shrink-0 mt-0.5"
+                    className="text-[#B8860B] flex-shrink-0 mt-0.5"
                     aria-hidden="true"
                   />
                   <div>
@@ -86,7 +109,7 @@ export default function About() {
                       {reason.title}
                     </span>
                     <p
-                      className="text-[#b8b8b8] text-[14px] leading-relaxed mt-1"
+                      className="text-[#b8b8b8] text-[13px] leading-relaxed mt-1"
                       style={{ fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {reason.desc}
@@ -95,52 +118,54 @@ export default function About() {
                 </li>
               ))}
             </ul>
-
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="btn-gold"
-              >
-                Schedule Free Consultation
-              </button>
-              <a href="tel:9175477563" className="btn-gold-outline">
-                Call (917) 547-7563
-              </a>
-            </div>
           </div>
+        </div>
 
-          {/* Image Side */}
-          <div className="fade-up relative" style={{ transitionDelay: "200ms" }}>
-            <div className="relative">
-              {/* Gold frame accent */}
-              <div
-                className="absolute -top-4 -right-4 w-full h-full border border-[#C9A84C]/30 rounded-lg"
-                aria-hidden="true"
-              />
-              <img
-                src={ATTORNEY_IMG}
-                alt="Randy O. Smith, Attorney at Law — R.O. Smith Law Firm"
-                className="relative z-10 w-full rounded-lg object-cover shadow-[0_24px_80px_rgba(0,0,0,0.6)]"
-                style={{ maxHeight: "600px", objectPosition: "top" }}
-                loading="lazy"
-              />
-              {/* Gold badge */}
-              <div
-                className="absolute bottom-6 left-6 z-20 bg-[#0a0a0a]/90 backdrop-blur-sm border border-[#C9A84C]/40 rounded-md px-4 py-3"
-              >
-                <p
-                  className="text-[#C9A84C] font-bold text-base"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                  Randy O. Smith
-                </p>
-                <p
-                  className="text-[#b8b8b8] text-xs mt-0.5"
+        {/* Attorney Bio Section */}
+        <div className="mt-20 pt-16 border-t border-white/8 fade-up">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="h-px w-8 bg-[#B8860B]" />
+                <span
+                  className="text-[#B8860B] text-xs font-semibold tracking-[0.25em] uppercase"
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  Attorney at Law · New York
-                </p>
+                  Meet The Attorney
+                </span>
               </div>
+              <h3
+                className="text-[26px] md:text-[32px] font-bold text-[#f5f5f5] leading-tight"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                William R. Bergmann
+              </h3>
+              <p
+                className="text-[#B8860B] text-sm font-semibold mt-2"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Attorney at Law · San Antonio, TX
+              </p>
+            </div>
+            <div className="lg:col-span-2">
+              <p
+                className="text-[#b8b8b8] text-base leading-relaxed mb-4"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Mr. Bergmann is a proud product of the city of San Antonio. He was born, raised, employed and educated in this amazing city. Mr. Bergmann received his bachelor's in business administration from the University of Texas A&M San Antonio where he graduated with honors and was a proud member of the inaugural class to carry the University's namesake.
+              </p>
+              <p
+                className="text-[#b8b8b8] text-base leading-relaxed mb-4"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                After receiving his teaching certificate, Mr. Bergmann taught at a listed Title I elementary school. There he realized the need to continue his education in order to benefit his community. Mr. Bergmann was able to attend St. Mary's Law School's night program while continuing his career as an educator during the day.
+              </p>
+              <p
+                className="text-[#b8b8b8] text-base leading-relaxed"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                His dedication to serving the San Antonio community drives his practice. I believe every client I represent should have the advantage of being represented by an attorney who can level the playing field.
+              </p>
             </div>
           </div>
         </div>

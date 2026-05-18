@@ -1,50 +1,36 @@
 /**
- * Testimonials Section — R.O. Smith Law Firm
- * Design: 3-card grid with gold left-border, frosted glass effect, staggered reveal
+ * Testimonials Section — Bergmann Law Firm, PLLC
+ * Design: Card grid with gold left-border, star ratings, staggered reveal
  */
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
     quote:
-      "Randy Smith is an exceptional attorney. He fought aggressively for my case and got the charges completely dismissed. I cannot recommend him enough — he truly cares about his clients.",
-    name: "Marcus T.",
-    caseType: "Criminal Defense — Drug Charges",
+      "I had an amazing experience with Bergmann Law Firm after my car accident. From the very start, they were incredibly helpful and supportive, guiding me through the entire legal process with care and professionalism.",
+    name: "Esteffany F.",
+    caseType: "Personal Injury — Car Accident",
     stars: 5,
   },
   {
     quote:
-      "After my car accident, I was overwhelmed and didn't know where to turn. R.O. Smith Law Firm handled everything and secured a settlement far beyond what I expected. Professional, responsive, and genuinely compassionate.",
-    name: "Diane R.",
-    caseType: "Personal Injury — Auto Accident",
+      "Extremely helpful although he wasn't quite the lawyer I was looking for he definitely pointed me in not one but several other options rather than hanging up on me. Super friendly and definitely keeping him in my back pocket for future events!",
+    name: "Brittany F.",
+    caseType: "Legal Consultation",
     stars: 5,
   },
   {
     quote:
-      "Mr. Smith guided us through a complex commercial real estate transaction with precision and clarity. His attention to detail saved us from a potentially costly title dispute. Outstanding service.",
-    name: "James & Priya K.",
-    caseType: "Real Estate Law — Commercial Transaction",
+      "I'm beyond grateful for the incredible work Bergmann Law Firm did handling my car accident case. From day one, they were on top of everything, providing clear communication and expert guidance throughout the entire process.",
+    name: "Veronica Z.",
+    caseType: "Personal Injury — Car Accident",
     stars: 5,
   },
   {
     quote:
-      "Available at all hours, incredibly knowledgeable, and genuinely invested in my outcome. Randy got my DUI reduced to a lesser charge and helped me keep my license. Life-changing representation.",
-    name: "Anthony L.",
-    caseType: "Criminal Defense — DUI",
-    stars: 5,
-  },
-  {
-    quote:
-      "From the first consultation to the final settlement, the team at R.O. Smith Law Firm was professional, thorough, and effective. My slip-and-fall case was handled with the utmost care.",
-    name: "Sandra M.",
-    caseType: "Personal Injury — Slip & Fall",
-    stars: 5,
-  },
-  {
-    quote:
-      "I was facing serious domestic violence charges that could have ruined my career. Randy Smith built a compelling defense and the case was dismissed. He is the attorney you want in your corner.",
-    name: "Kevin O.",
-    caseType: "Criminal Defense — Domestic Violence",
+      "They fought for me and helped me get 50/50 custody with joint conservatorship. They knew I was in a financial bind and worked with me. I highly recommend this firm for anyone going through a custody battle in Texas.",
+    name: "Digi J.",
+    caseType: "Family Law — Child Custody",
     stars: 5,
   },
 ];
@@ -56,7 +42,7 @@ function StarRating({ count }: { count: number }) {
         <Star
           key={i}
           size={14}
-          className="text-[#C9A84C] fill-[#C9A84C]"
+          className="text-[#B8860B] fill-[#B8860B]"
           aria-hidden="true"
         />
       ))}
@@ -68,48 +54,49 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20 md:py-28 bg-[#0a0a0a]"
+      className="py-20 md:py-28 bg-[#0A0F1A]"
       aria-labelledby="testimonials-heading"
     >
       <div className="container">
         {/* Header */}
-        <div className="mb-14 fade-up">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px w-8 bg-[#C9A84C]" />
+        <div className="text-center mb-14 fade-up">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-px w-8 bg-[#B8860B]" />
             <span
-              className="text-[#C9A84C] text-xs font-semibold tracking-[0.25em] uppercase"
+              className="text-[#B8860B] text-xs font-semibold tracking-[0.25em] uppercase"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Client Testimonials
+              Client Success Stories
             </span>
+            <div className="h-px w-8 bg-[#B8860B]" />
           </div>
           <h2
             id="testimonials-heading"
-            className="text-[30px] md:text-[40px] font-bold text-[#f5f5f5] leading-tight"
+            className="text-[30px] md:text-[42px] font-bold text-[#f5f5f5] leading-tight"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
             What Our{" "}
-            <span className="gold-underline text-[#C9A84C]">Clients Say</span>
+            <span className="gold-underline text-[#B8860B]">Clients</span> Say
           </h2>
           <p
-            className="text-[#b8b8b8] mt-4 max-w-xl text-base leading-relaxed"
+            className="text-[#b8b8b8] mt-4 max-w-xl mx-auto text-base leading-relaxed"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
-            Real results from real clients across New York City and surrounding counties.
+            Our clients' trust and satisfaction are the foundation of our practice. Here's what they have to say about working with Bergmann Law Firm.
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <blockquote
               key={i}
               className="testimonial-card fade-up flex flex-col"
-              style={{ transitionDelay: `${i * 80}ms` }}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="flex items-start justify-between mb-4">
                 <StarRating count={t.stars} />
-                <Quote size={20} className="text-[#C9A84C]/30 flex-shrink-0" aria-hidden="true" />
+                <Quote size={20} className="text-[#B8860B]/30 flex-shrink-0" aria-hidden="true" />
               </div>
               <p
                 className="text-[#E8D5B7] text-[15px] italic leading-relaxed flex-1 mb-5"
@@ -125,7 +112,7 @@ export default function Testimonials() {
                   {t.name}
                 </p>
                 <p
-                  className="text-[#C9A84C] text-xs mt-0.5"
+                  className="text-[#B8860B] text-xs mt-0.5"
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {t.caseType}
@@ -133,17 +120,6 @@ export default function Testimonials() {
               </footer>
             </blockquote>
           ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10 text-center fade-up">
-          <a
-            href="/testimonials"
-            className="inline-flex items-center gap-2 text-[#C9A84C] font-semibold text-sm hover:text-[#d4b896] transition-colors duration-200 border-b border-[#C9A84C]/40 hover:border-[#d4b896] pb-0.5"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
-          >
-            Read More Testimonials →
-          </a>
         </div>
       </div>
     </section>
